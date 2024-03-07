@@ -1,0 +1,32 @@
+﻿DECLARE @TranName VARCHAR(15) = 'transaction1'
+
+BEGIN TRANSACTION @TranName
+
+INSERT INTO Users VALUES ('Martin', '****', 1, DEFAULT)
+
+IF (SELECT MAX(Id) FROM Users) > 35
+BEGIN
+	PRINT('Rolling back transaction')
+	ROLLBACK TRANSACTION @TranName
+END
+ELSE
+BEGIN
+	PRINT 'Commiting transaction'
+	COMMIT TRANSACTION @TranName
+END
+
+
+
+
+BEGIN TRY
+    BEGIN TRANSACTION 
+
+	INSERT INTO Users VALUES ('Martin', '****', 1, DEFAULT)
+
+    COMMIT
+END TRY
+BEGIN CATCH
+
+    IF @@TRANCOUNT > 0
+        ROLLBACK
+END CATCH

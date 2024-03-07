@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "input=report.xlsx output=Users.csv logPath=app.log -verbose -override"
+    }
+  }
+}
