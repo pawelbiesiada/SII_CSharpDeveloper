@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <StartupObject>CSharpConsole.Program</StartupObject>
+    <StartupObject>CSharpConsole.Samples.Class.Inheritance.CarPresentation</StartupObject>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 

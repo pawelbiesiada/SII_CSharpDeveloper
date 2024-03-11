@@ -34,7 +34,8 @@ namespace CSharpConsole.Samples.Class
             Distance += CalculateDistance(_speed, duration);
         }
 
-        public bool IsServiceCheckNeeded()
+
+        public virtual bool IsServiceCheckNeeded()
         {
             return Distance > ServiceCheckAfter;
         }

@@ -42,6 +42,8 @@ namespace CSharpConsole.Samples.Class.Inheritance
     {
         private const int ServiceCheckAfter = 1000; //need to have lower value for SportCar
 
+        private bool WasCarUsedOnSpeedTrack = false;
+
         public SportCar() : base(200)
         {}
 
@@ -51,13 +53,15 @@ namespace CSharpConsole.Samples.Class.Inheritance
                 throw new ArgumentException($"Speed cannot be lower than 200, actual: {speed}");
         }
 
-        public bool IsServiceCheckNeeded() //this covers method in Car class
+        public override bool IsServiceCheckNeeded() //this covers method in Car class
         {
-            return Distance > ServiceCheckAfter;
+            return WasCarUsedOnSpeedTrack || base.IsServiceCheckNeeded();
         }
 
         public void DriveFast()
-        { }
+        {
+            WasCarUsedOnSpeedTrack = true;
+        }
     }
 
     class LuxurySportCar : SportCar
@@ -147,9 +151,12 @@ namespace CSharpConsole.Samples.Class.Inheritance
             var fcar2 = familyCar as FamilyCar;
             var scar2 = familyCar as SportCar;
 
-            if(scar2 != null)
-            {
 
+            scar2?.Drive(3);
+
+            if (scar2 != null)
+            {
+                scar2.Drive(3);
             }
 
             SportCar sportCar = new SportCar();
