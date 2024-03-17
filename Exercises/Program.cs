@@ -20,6 +20,9 @@ var ci = new CultureInfo("");
 //var myBirthDay = new DateTime(1987, 7, 8);  //DateTime.Parse("08.07.1987");
 //Birthday.DaysPassedSince(myBirthDay);
 
+new LinqTest().Test();
+
+EmpTest.Main(null);
 
 //var car = new Car(50);
 //car.Drive(33);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace CSharpConsole.Samples.SOLID
 {
@@ -24,6 +25,16 @@ namespace CSharpConsole.Samples.SOLID
         }
 
         private void ModifyCollection(ICollection<string> collection)
+        {
+            collection.Add("element");
+        }
+
+        private void ModifyCollection<T>(ICollection<T> collection, T elementToAdd)
+        {
+            collection.Add(elementToAdd);
+        }
+
+        private void ModifyCollection(ISet<string> collection)
         {
             collection.Add("element");
         }

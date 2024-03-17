@@ -20,15 +20,18 @@
 
         public virtual void TakeOff()
         {
-            
+            StartEngine();
             Altitude = 100;
         }
         public virtual void Land()
         {
             Altitude = 0;
+            StopEngine();
         }
 
         protected abstract void StartEngine();
+
+
         protected abstract void StopEngine();
     }
 

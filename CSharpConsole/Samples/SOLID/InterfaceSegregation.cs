@@ -1,4 +1,6 @@
-﻿namespace CSharpConsole.Samples.SOLID
+﻿using System;
+
+namespace CSharpConsole.Samples.SOLID
 {
     internal interface IParser
     {
@@ -18,5 +20,39 @@
     internal interface IJsonParser
     {
         string ParseJson(byte[] stream);
+    }
+
+
+    interface IPrinter
+    {
+        void Print();
+    }
+
+    interface IScaner
+    {
+        void Scan();
+    }
+
+
+    class MultifunctionalPRinter : IPrinter, IScaner
+    {
+        public void Print()
+        {
+            //
+        }
+
+        public void Scan()
+        {
+            //
+        }
+    }
+
+    class JustPrinter : IPrinter
+    {
+        public void Print()
+        {
+            //
+        }
+
     }
 }

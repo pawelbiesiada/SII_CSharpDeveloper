@@ -2,6 +2,24 @@
 
 namespace CSharpConsole.Samples.Class.Inheritance
 {
+    public class CapacityExceededException : ApplicationException
+    {
+        public CapacityExceededException() { }
+
+        public CapacityExceededException(string message) : base(message) { }
+
+        public CapacityExceededException(string message, int maxCapacity, int leftCapacity, int load) : this(message)
+        {
+            MaxCapacity = maxCapacity;
+            LeftCapacity = leftCapacity;
+            Load = load;
+        }
+
+        public int MaxCapacity { get; set; }
+        public int LeftCapacity { get; set; }
+        public int Load { get; set; }
+    }
+
     public class FamilyCar : Car
     {
         protected int TrunkCapacityLeft;
@@ -27,7 +45,9 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
             if (load > TrunkCapacityLeft)
             {
-                throw new ApplicationException("The given load exceeds available trunk capacity"); 
+                //throw new ApplicationException("The given load exceeds available trunk capacity"); 
+                throw new CapacityExceededException("The given load exceeds available trunk capacity")
+                { MaxCapacity = TrunkCapacity, LeftCapacity = TrunkCapacityLeft, Load = load };
                 //you can create our own exception type here
             }
 
@@ -66,6 +86,10 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
     class LuxurySportCar : SportCar
     {
+        public int MyProperty { get; set; }
+
+
+
         public LuxurySportCar() : base(250)
         {
 
@@ -87,6 +111,8 @@ namespace CSharpConsole.Samples.Class.Inheritance
         {
 
         }
+
+        public void WorkHard() { }
     }
 
 
@@ -102,9 +128,23 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
             car = new FamilyCar(80);
             ((FamilyCar)car).LoadTrunk(3);
+            FamilyCar fcar = null;
 
-            var fcar = new FamilyCar(80);
-            fcar.LoadTrunk(3);
+            try
+            {
+                fcar = new FamilyCar(80);
+                fcar.LoadTrunk(1000);
+                fcar.LoadElements(new[] { 2, 34, 5, 6 });
+            }
+            catch (CapacityExceededException e)
+            {
+                Console.WriteLine("Capacity Exceeded Exception");
+                Console.WriteLine("Max capacity: " + e.MaxCapacity);
+                Console.WriteLine("Left capacity: " + e.LeftCapacity);
+                Console.WriteLine("Load: " + e.Load);                
+            }
+
+
 
             car = new SportCar(280);
             car = new LuxurySportCar();
@@ -123,7 +163,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
             DriveCar(car);
 
 
-            var isTypeOf = car is ICar;
+            var isTypeOf = car is IVehicle;
 
             Car familyCar = new FamilyCar(80);
             //var capacity = familyCar.TrunkCapacity; // we don't have an access
@@ -134,9 +174,19 @@ namespace CSharpConsole.Samples.Class.Inheritance
             //familyCar2.LoadTrunk();
 
             var isFcar = familyCar is FamilyCar;
-            var isScar = familyCar is SportCar;
 
-            if(isFcar)
+
+            car = new LuxurySportCar();
+            
+            var isScar = car is SportCar;             //true
+            var isLScar = car is LuxurySportCar;      //true
+
+            var newCasted = car as SportCar;
+
+
+
+
+            if (isFcar)
             {
 
                 var familyCar2 = (FamilyCar)familyCar;
@@ -161,7 +211,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
             SportCar sportCar = new SportCar();
             sportCar = new LuxurySportCar();
-            isTypeOf = sportCar is ICar;
+            isTypeOf = sportCar is IVehicle;
             //sportCar = new Car(90); // can't do'
             //you can cast detailed object to more generic implicitly
 
@@ -187,7 +237,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
         }
 
-        private static void CastInterfaceTest(ICar car)
+        private static void CastInterfaceTest(IVehicle car)
         {
             car.Drive(10);
             Console.WriteLine($"new Distance {car.Distance}");

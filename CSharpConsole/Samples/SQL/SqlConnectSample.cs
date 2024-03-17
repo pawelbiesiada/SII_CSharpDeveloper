@@ -13,6 +13,8 @@ namespace CSharpConsole.Samples.SQL
             var connStr = string.Empty;
             try
             {
+                var lang = ConfigurationManager.AppSettings["language"]; //"pl-pl"
+
                 connStr = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             }
             catch (Exception e)
@@ -41,11 +43,11 @@ namespace CSharpConsole.Samples.SQL
 
         public void Execute()
         {
-            GetRecordsWithSelect();
+            GetRecordsWithSelect("John");
             ExecuteProcedure();
         }
 
-        private void GetRecordsWithSelect()
+        private void GetRecordsWithSelect(string name)
         {
             var connStr = _connectionStringProvider.GetConnectionSting();
             if (string.IsNullOrEmpty(connStr))
@@ -60,14 +62,22 @@ namespace CSharpConsole.Samples.SQL
                     connection.Open();
 
                     var command = connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM  Users";
+                    command.CommandText = "SELECT * FROM  Users" +
+                        "Where name = @Name";
+
+
+                    var isActiveParameter = command.CreateParameter();
+                    isActiveParameter.DbType = DbType.String;
+                    isActiveParameter.ParameterName = "@Name";
+                    isActiveParameter.Value = name;
+
 
                     var reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        var idCol = (int)reader["Id"];
-                        var nameCol = (string)reader["Name"];
+                        var idCol = reader.GetInt32("Id");
+                        var nameCol = reader.GetString("Name");
                         Console.WriteLine($"{idCol} : {nameCol}");
                     }
                 }

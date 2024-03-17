@@ -1,9 +1,12 @@
-﻿using CSharpConsole.Samples.SOLID;
+﻿using CSharpConsole.Samples.Class.Inheritance;
+using CSharpConsole.Samples.SOLID;
 using System;
+using System.IO;
 
 namespace CSharpConsole.Samples.Class
 {
     public class Car
+    public class Car : IVehicle, IServiceable
     {
         //Constant Field
         private const int ServiceCheckAfter = 10_000;
@@ -19,6 +22,7 @@ namespace CSharpConsole.Samples.Class
             //var car = new Car(100); initialization sample
             _speed = avgSpeed;
         }
+
         public Car(int avgSpeed, ILogger logger)
         {
             //var car = new Car(100); initialization sample
@@ -27,11 +31,14 @@ namespace CSharpConsole.Samples.Class
         // Properties
         public int Distance { get; set; }
 
+        public static int StaticDistance {  get; set; }
+
 
         // Methods
         public void Drive(int duration)
         {
             Distance += CalculateDistance(_speed, duration);
+            StaticDistance += CalculateDistance(_speed, duration);
         }
 
 
@@ -40,9 +47,23 @@ namespace CSharpConsole.Samples.Class
             return Distance > ServiceCheckAfter;
         }
 
-        private static int CalculateDistance(int speed, int duration)
+        public static int CalculateDistance(int speed, int duration)
         {
             return speed * duration;
+        }
+
+        public void DoService()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    class CarFactory
+    {
+        public Car CreateCar()
+        {
+            return new Car(3);
         }
     }
 
@@ -88,6 +109,19 @@ namespace CSharpConsole.Samples.Class
         {
             car.Distance = 200;
             car = new Car(300);
+        }
+
+    class Motorbike : IVehicle
+    {
+        public int Distance { get; set; }
+
+        public void Drive(int duration)
+        {
+        }
+
+        public bool IsServiceCheckNeeded()
+        {
+            return false;
         }
     }
 }
