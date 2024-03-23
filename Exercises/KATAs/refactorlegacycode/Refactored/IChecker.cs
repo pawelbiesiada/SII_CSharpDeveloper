@@ -3,6 +3,6 @@
     public interface IChecker
     {
         bool IsCorrect();
-        string GetMessage()
+        string GetMessage();
     }
 }

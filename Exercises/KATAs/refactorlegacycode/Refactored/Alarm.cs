@@ -19,7 +19,7 @@ namespace KataCSharpStarting.Refactored
         {
             double psiPressureValue = sensor.PopNextPressurePsiValue();
 
-            return psiPressureValue < LowPresureThreshold || psiPressureValue > HighPresureThreshold; '
+            return psiPressureValue < LowPresureThreshold || psiPressureValue > HighPresureThreshold;
         }
 
         public string GetMessage()
@@ -106,9 +106,7 @@ namespace KataCSharpStarting.Refactored
             alarm.OnAlarm += Alarm_OnAlarm; // write to console
             alarm.OnAlarm += (s, e) => {  }; // sends email
 
-
             alarm.Validate();
-
         }
 
         private void Alarm_OnAlarm(object sender, AlarmEventArgs e)
