@@ -1,4 +1,5 @@
 ﻿using CSharpConsole.Exercises;
+using CSharpConsole.Samples.SQL;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,12 +39,22 @@ namespace MyWpfApp
         {
             //var names = new[] {"John", "Mark", "Bob", "Anna" };
             //cbxNames.ItemsSource = names;
-            var users = CreateCollection.GetUsers().Where(u => u is not null).ToArray();
+            //var users = CreateCollection.GetUsers().Where(u => u is not null).ToArray();
 
-            cbxNames.ItemsSource = users;
-            cbxNames.DisplayMemberPath = "Name";
+            var users = new SqlConnectSample().GetUsers();
 
-            cbxNames.SelectedIndex = 0;
+            if(users != null )
+            {
+                cbxNames.ItemsSource = users;
+                cbxNames.DisplayMemberPath = "Name";
+
+                cbxNames.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("Can't load data from database");
+            }
+
         }
 
         private void cbxNames_SelectionChanged(object seneder, SelectionChangedEventArgs e)

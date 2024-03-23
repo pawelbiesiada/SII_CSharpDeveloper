@@ -1,5 +1,4 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -46,7 +45,7 @@ namespace Exercises.Workshop
 
             try
             {
-                using (var connection = new OracleConnection())
+                using (var connection = new SqlConnection())
                 {
                     connection.Open();
 

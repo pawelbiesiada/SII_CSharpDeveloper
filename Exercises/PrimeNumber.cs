@@ -27,9 +27,21 @@ namespace MyExercises
         public static void CheckAndPrintPrimeNumberValidation()
         {
             Console.WriteLine("Provide number to validate: ");
+            int myint = 0;
+            try
+            {
+                myint = int.Parse(Console.ReadLine());
+               // var isPrime = IsPrimeNumber(myint);
+             //   var message = isPrime ? "Is prime number" : "Is not a prime number.";
+               // Console.WriteLine(message);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Provided string was not a valid integer number");
+            }
 
-            var isPrime = IsPrimeNumber(int.Parse(Console.ReadLine()));
-
+            var wasParsed = int.TryParse(Console.ReadLine(), out myint);
+            var isPrime = IsPrimeNumber(myint);
             var message = isPrime ? "Is prime number" : "Is not a prime number.";
             Console.WriteLine(message);
         }

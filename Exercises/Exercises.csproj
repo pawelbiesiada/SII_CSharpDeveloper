@@ -16,8 +16,4 @@
     <Folder Include="Private\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="21.13.0" />
-  </ItemGroup>
-
 </Project>
