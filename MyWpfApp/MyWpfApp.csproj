@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CSharpConsole\CSharpConsole.csproj" />
+    <ProjectReference Include="..\MyEFLibrary\MyEFLibrary.csproj" />
   </ItemGroup>
 
 </Project>
