@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpConsole.Samples.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,30 @@ using System.Threading.Tasks;
 
 namespace CSharpConsole.Exercises
 {
+    public class CollectionTest
+    {
+        private bool IsActive(User u)
+        {
+            return u.IsActive;
+        }
+
+        public void MyMth()
+        {
+            var users =  CreateCollection.GetUsers();
+
+            var active5Users = users
+                .Where(u => u.IsActive)
+                .OrderBy(u => u.Name)
+                .Take(5)
+                .Select(u => new { Id = u.Id, Name = u.Name})
+                .ToArray();
+
+
+            var c = users.MyCustomCount();
+        }
+    }
+
+
     public class User
     {
         public int Id { get; set; }
@@ -30,6 +55,8 @@ namespace CSharpConsole.Exercises
     {
         public static IEnumerable<User> GetUsers()
         {
+            var users = new List<User>();
+
             yield return new User { Id = 1, Name = "John", IsActive = true, Password = "Password" };
             yield return new User { Id = 7, Name = "Susan", IsActive = true, Password = "qwerasdf" };
             yield return new User { Id = 2, Name = "Andrew", IsActive = true, Password = "qwerty" };

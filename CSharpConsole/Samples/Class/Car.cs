@@ -5,7 +5,16 @@ using System.IO;
 
 namespace CSharpConsole.Samples.Class
 {
-    public class Car
+    struct MyStruct
+    {
+
+    }
+
+    class CarDto
+    {
+        public int Distance { get; set; }
+    }
+
     public class Car : IVehicle, IServiceable
     {
         //Constant Field
@@ -13,6 +22,7 @@ namespace CSharpConsole.Samples.Class
 
         // Fields
         private readonly int _speed;
+        private readonly ILogger logger;
 
         // Constructor
         public Car(int avgSpeed)
@@ -27,7 +37,9 @@ namespace CSharpConsole.Samples.Class
         {
             //var car = new Car(100); initialization sample
             _speed = avgSpeed;
+            this.logger = logger;
         }
+
         // Properties
         public int Distance { get; set; }
 
@@ -44,7 +56,18 @@ namespace CSharpConsole.Samples.Class
 
         public virtual bool IsServiceCheckNeeded()
         {
-            return Distance > ServiceCheckAfter;
+            var isNeeded = Distance > ServiceCheckAfter;
+
+            if(isNeeded)
+            {
+                logger?.LogWarning("Need to do a service!!!");
+            }
+            else
+            {
+                logger?.LogDebug("Don't need a service.");
+            }
+
+            return isNeeded;
         }
 
         public static int CalculateDistance(int speed, int duration)
@@ -76,6 +99,9 @@ namespace CSharpConsole.Samples.Class
             Car car3 = new Car(30);
 
             car.Drive(10);
+
+            Car.CalculateDistance(2,21);
+            Console.WriteLine("");
 
             var areEqual = car == car2; //false
             areEqual = car == car3; //false
@@ -110,6 +136,18 @@ namespace CSharpConsole.Samples.Class
             car.Distance = 200;
             car = new Car(300);
         }
+
+
+
+        public void DoSth(IVehicle c)
+        {
+            
+            var dist = c.Distance;
+
+            c.Drive(100);
+        }
+    }
+
 
     class Motorbike : IVehicle
     {

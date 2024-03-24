@@ -24,6 +24,12 @@ namespace CSharpConsole.Samples.Threading.Threads
             t1.Start();
             t2.Start();
 
+            ///
+            ///
+            /// 
+            Console.WriteLine("");
+            ///
+
             t1.Join();
             t2.Join();
 
@@ -31,17 +37,30 @@ namespace CSharpConsole.Samples.Threading.Threads
             Console.WriteLine("Thread2 executed the loop {0:N0} times", _thread2Counter);
             Console.WriteLine("Both Thread1 & Thread2 executed the loop {0:N0} times", (_thread1Counter + _thread2Counter));
             Console.WriteLine("CommonCounter was increased {0:N0} times", _commonCounter);
-            Console.WriteLine("InterlockedCommonCounter was increased {0:N0} times", _interlockedCommonCounter);
+            Console.WriteLine("_interlockedCommonCounter was increased {0:N0} times", _interlockedCommonCounter);
             Console.ReadKey();
         }
+
+        private object _locker = new object();
 
         private void Increment1()
         {
             while (_commonCounter < 10_000_000)
             {
-
-                _commonCounter++;
                 Interlocked.Increment(ref _interlockedCommonCounter);
+
+
+                lock (_locker)
+                {
+                    if(_commonCounter < 10_000_000 )
+                    {
+                        _commonCounter++;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
                 _thread1Counter++;
             }
         }
@@ -50,8 +69,20 @@ namespace CSharpConsole.Samples.Threading.Threads
         {
             while (_commonCounter < 10_000_000)
             {
-                _commonCounter++;
                 Interlocked.Increment(ref _interlockedCommonCounter);
+
+
+                lock (_locker)
+                {
+                    if (_commonCounter < 10_000_000)
+                    {
+                        _commonCounter++;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
                 _thread2Counter++;
             }
         }

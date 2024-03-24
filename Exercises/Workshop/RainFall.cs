@@ -38,9 +38,11 @@ namespace Exercises.Workshop
         public void AddRainFall(int month, int fall)
         {
             if (month <= 0 || month > 12)
-                return;
+                throw new ArgumentException(nameof(month));  // "month"
+            if(fall < 0)
+                throw new ArgumentException("fall");
 
-            _rainFalls[month - 1] = fall;
+            _rainFalls[month - 1] += fall;
         }
 
         public void AddRainFall(Month month, int fall)

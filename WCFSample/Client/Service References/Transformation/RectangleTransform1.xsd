@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="WCFService.Standard" elementFormDefault="qualified" targetNamespace="WCFService.Standard" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetRectangle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="width" type="xs:double" />
+        <xs:element minOccurs="0" name="height" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRectangleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRectangleResult" nillable="true" type="tns:Rectangle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Rectangle">
+    <xs:sequence>
+      <xs:element name="Height" type="xs:double" />
+      <xs:element name="Width" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rectangle" nillable="true" type="tns:Rectangle" />
+  <xs:element name="ChangeSize">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rect" nillable="true" type="tns:Rectangle" />
+        <xs:element minOccurs="0" name="factor" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeSizeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChangeSizeResult" nillable="true" type="tns:Rectangle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSquare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rect" nillable="true" type="tns:Rectangle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSquareResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSquareResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

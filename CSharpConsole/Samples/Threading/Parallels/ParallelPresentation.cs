@@ -13,7 +13,7 @@ namespace CSharpConsole.Samples.Threading.Parallels
 
         private void Execute()
         {
-            Parallel.For(0, 20, new ParallelOptions() {MaxDegreeOfParallelism = 8 }, PrintMessage);
+            Parallel.For(0, 20, new ParallelOptions() {MaxDegreeOfParallelism = 4 }, PrintMessage);
             Console.ReadKey();
 
 
@@ -24,13 +24,25 @@ namespace CSharpConsole.Samples.Threading.Parallels
             {
                 arr[i] = i;
             }
-            Parallel.ForEach(arr, new ParallelOptions() { MaxDegreeOfParallelism = 8 }, PrintMessage);
+
+            var strArray = new string[arr.Length];
+            Parallel.ForEach<int>(arr, new ParallelOptions() { MaxDegreeOfParallelism = 8 }, PrintMessage);
+
+
+            Parallel.Invoke();
+
             Console.ReadKey();
         }
 
         private void PrintMessage(int number)
         {
             Console.WriteLine("Executed iteration {0}.", number);
+        }
+
+
+        private void PrintStringMessage(string msg)
+        {
+            Console.WriteLine("Executed iteration {0}.", msg);
         }
     }
 }
