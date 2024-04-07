@@ -1,19 +1,33 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace CSharpConsole.Samples.Threading.Parallels
 {
     internal class ParallelPresentation
     {
-        private static void Main()
+        #region public stuff
+
+        public static void Main()
         {
             var sample = new ParallelPresentation();
             sample.Execute();
         }
 
-        private void Execute()
+        public void Execute()
         {
-            Parallel.For(0, 20, new ParallelOptions() {MaxDegreeOfParallelism = 4 }, PrintMessage);
+            try
+            {
+                Parallel.For(0, 20, new ParallelOptions() { MaxDegreeOfParallelism = 4 }, PrintMessage);
+
+            }
+            catch (AggregateException aex)
+            {
+                foreach (var ex in aex.InnerExceptions)
+                {
+
+                }
+            }
             Console.ReadKey();
 
 
@@ -26,16 +40,35 @@ namespace CSharpConsole.Samples.Threading.Parallels
             }
 
             var strArray = new string[arr.Length];
+
+
+            //#warning using if based on release build configuration
+
+
             Parallel.ForEach<int>(arr, new ParallelOptions() { MaxDegreeOfParallelism = 8 }, PrintMessage);
 
 
-            Parallel.Invoke();
+            Parallel.Invoke(  () => PrintMessage(3), () => FileDownload("SomePathHere")  );
 
             Console.ReadKey();
         }
 
+        #endregion
+
+
+        #region private stuff
+        private void FileDownload(string urlPath)
+        {
+
+        }
+
         private void PrintMessage(int number)
         {
+            if(number % 3 == 0)
+            {
+                throw new ArgumentException();
+            }
+
             Console.WriteLine("Executed iteration {0}.", number);
         }
 
@@ -44,5 +77,7 @@ namespace CSharpConsole.Samples.Threading.Parallels
         {
             Console.WriteLine("Executed iteration {0}.", msg);
         }
+
+        #endregion
     }
 }

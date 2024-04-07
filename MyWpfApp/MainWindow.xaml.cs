@@ -39,9 +39,8 @@ namespace MyWpfApp
         {
             //var names = new[] {"John", "Mark", "Bob", "Anna" };
             //cbxNames.ItemsSource = names;
-            //var users = CreateCollection.GetUsers().Where(u => u is not null).ToArray();
-
-            var users = new SqlConnectSample().GetUsers();
+            
+            var users = CreateCollection.GetUsers().Where(u => u is not null).ToArray();
 
             if(users != null )
             {

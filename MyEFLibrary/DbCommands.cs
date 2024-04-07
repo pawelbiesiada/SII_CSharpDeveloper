@@ -1,4 +1,5 @@
-﻿using MyEFLibrary.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MyEFLibrary.Models;
 
 namespace MyEFLibrary
 {
@@ -8,15 +9,27 @@ namespace MyEFLibrary
         {
             using (var ctx = new EftestDbContext())
             {
-                // Add new group "PowerUser"
-                var groups = ctx.Groups;
-                groups.Add(new Group() { Name = "PowerUser" });
+               var tran = ctx.Database.BeginTransaction();
 
-                //Remove non active users
-                var users = ctx.Users;
-                users.RemoveRange(users.Where(u => !u.IsActive));
+                try
+                {
+                    // Add new group "PowerUser"
+                    var groups = ctx.Groups;
+                    groups.Add(new Group() { Name = "PowerUser" });
 
-                ctx.SaveChanges();
+                    //Remove non active users
+                    var users = ctx.Users;
+                    users.RemoveRange(users.Where(u => !u.IsActive));
+                }
+                catch (Exception)
+                {
+                    ctx.Database.RollbackTransaction();
+                }
+
+                ctx.Database.CommitTransaction();
+
+                //ctx.SaveChanges();
+
 
                 //Get all users with their groups
                 var usersWithGroups = ctx.Users
@@ -44,11 +57,10 @@ namespace MyEFLibrary
 
 
                 //Get all groups for a single user
-                var userGroups = ctx.Users
-                    .FirstOrDefault(u => u.Id == 13)
-                        ?.UserGroups.Select(ug => ug.Group.Name)
+                var userGroups = ctx.Users.Include(u => u.UserGroups).ThenInclude(ug => ug.Group)
+                    .First(u => u.Id == 13)
+                        .UserGroups.Select(ug => ug.Group.Name)
                     .ToArray() ?? new string[0];
-
 
 
             }

@@ -25,7 +25,7 @@ namespace MyWpfApp
             InitializeComponent();
         }
 
-        private void Load_Click(object sender, RoutedEventArgs e)
+        private async void Load_Click(object sender, RoutedEventArgs e)
         {
             var path = txtFilePath.Text;
 
@@ -40,7 +40,7 @@ namespace MyWpfApp
                 if (System.IO.Path.GetExtension(txtFilePath.Text).Equals(".txt"))
                 {
                     txtContent.Visibility = Visibility.Visible;
-                    txtContent.Text = File.ReadAllText(txtFilePath.Text);
+                    txtContent.Text = await File.ReadAllTextAsync(txtFilePath.Text);
                     
                 }
                 else if(System.IO.Path.GetExtension(txtFilePath.Text).Equals(".png"))
@@ -57,7 +57,7 @@ namespace MyWpfApp
             //imgContent.Source = new BitmapImage(new Uri(path));
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace MyWpfApp
                     return;
                 }
 
-                File.WriteAllText(txtFilePath.Text, txtContent.Text);
+                await File.WriteAllTextAsync(txtFilePath.Text, txtContent.Text);
                 txtContent.Visibility = Visibility.Collapsed;
                 imgContent.Visibility = Visibility.Collapsed;
             }

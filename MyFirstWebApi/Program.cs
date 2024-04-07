@@ -10,6 +10,11 @@ namespace MyFirstWebApi
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            //builder.Services.AddScoped()
+            //builder.Services.AddSingleton();
+            //builder.Services.AddTransient();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

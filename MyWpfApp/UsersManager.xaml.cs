@@ -27,16 +27,20 @@ namespace MyWpfApp
             InitializeComponent();
         }
 
-        private void Load_Click(object sender, RoutedEventArgs e)
+        private async void Load_Click(object sender, RoutedEventArgs e)
         {
-            _dbCtx.Users.Load();
+            await _dbCtx.Users.LoadAsync();
+
+
+            var singleUser = await _dbCtx.Users.FirstOrDefaultAsync( u => u.Id == 13);
+
 
             dgUsers.ItemsSource = _dbCtx.Users.Local.ToBindingList();
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            _dbCtx.SaveChanges();
+            await _dbCtx.SaveChangesAsync();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

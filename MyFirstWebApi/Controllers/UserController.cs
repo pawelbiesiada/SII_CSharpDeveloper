@@ -8,20 +8,20 @@ namespace MyFirstWebApi.Controllers
     [ApiController]
     public class UserController : Controller
     {
-       // public UserController(IUserManager manager) { }
+        // public UserController(IUserManager manager) { }
 
         [HttpGet]
         [Route("Users")]
         [SwaggerResponse(200, "", typeof(IEnumerable<User>))]
         [SwaggerResponse(204, "")]
         [SwaggerResponse(500, "")]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             try
             {
                 using (var ctx = new EftestDbContext())
                 {
-                    var users = ctx.Users.ToArray();
+                    var users = await ctx.Users.ToArrayAsync();
                     if (users.Length == 0)
                     {
                         NoContent();

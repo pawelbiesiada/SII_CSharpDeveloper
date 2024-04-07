@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <StartupObject>CSharpConsole.Samples.Threading.Parallels.PlinqPresentation</StartupObject>
+    <StartupObject>AdvancedCSharp.Samples.Security.PasswordHash</StartupObject>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 

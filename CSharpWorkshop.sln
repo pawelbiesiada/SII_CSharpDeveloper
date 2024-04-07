@@ -9,19 +9,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstConsoleApp", "MyFirs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercises", "Exercises\Exercises.csproj", "{52194C74-4D62-469A-B496-C3E3E951D226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWpfApp", "MyWpfApp\MyWpfApp.csproj", "{A5FF752B-6612-45E9-9DEF-9ED071173DB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWpfApp", "MyWpfApp\MyWpfApp.csproj", "{A5FF752B-6612-45E9-9DEF-9ED071173DB5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFTestNET", "EFTestNET\EFTestNET.csproj", "{2E92AB03-8EEB-4BB1-89EC-1D8848174217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyEFLibrary", "MyEFLibrary\MyEFLibrary.csproj", "{2B88E2FE-77CB-4CFB-93E3-CBFE7B6C76B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyEFLibrary", "MyEFLibrary\MyEFLibrary.csproj", "{2B88E2FE-77CB-4CFB-93E3-CBFE7B6C76B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstWebApi", "MyFirstWebApi\MyFirstWebApi.csproj", "{D03DF9D5-8572-43D4-BEFA-B1BA3AAC6861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstWebApi", "MyFirstWebApi\MyFirstWebApi.csproj", "{D03DF9D5-8572-43D4-BEFA-B1BA3AAC6861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApp", "MyWebApp\MyWebApp.csproj", "{49AB1561-5ECA-4ADF-BA4A-062DE9DB28E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebApp", "MyWebApp\MyWebApp.csproj", "{49AB1561-5ECA-4ADF-BA4A-062DE9DB28E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProjectNET", "UnitTestProjectNET\UnitTestProjectNET.csproj", "{85267520-0C24-4587-92B0-AD9D4C47D38A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExercisesTests", "ExercisesTests\ExercisesTests.csproj", "{735A37A1-F583-4E2E-8779-FBF8B1CB4B45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExercisesTests", "ExercisesTests\ExercisesTests.csproj", "{735A37A1-F583-4E2E-8779-FBF8B1CB4B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousWPF", "AsynchronousWPF\AsynchronousWPF.csproj", "{C7CBA285-8C4B-4318-B450-902C804BAB24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIProject", "DIProject\DIProject.csproj", "{78324C35-E243-4595-884C-0F7A13B7C700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{735A37A1-F583-4E2E-8779-FBF8B1CB4B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{735A37A1-F583-4E2E-8779-FBF8B1CB4B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{735A37A1-F583-4E2E-8779-FBF8B1CB4B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CBA285-8C4B-4318-B450-902C804BAB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CBA285-8C4B-4318-B450-902C804BAB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CBA285-8C4B-4318-B450-902C804BAB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CBA285-8C4B-4318-B450-902C804BAB24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78324C35-E243-4595-884C-0F7A13B7C700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78324C35-E243-4595-884C-0F7A13B7C700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78324C35-E243-4595-884C-0F7A13B7C700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78324C35-E243-4595-884C-0F7A13B7C700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

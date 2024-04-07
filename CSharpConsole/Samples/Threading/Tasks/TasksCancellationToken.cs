@@ -14,7 +14,7 @@ namespace CSharpConsole.Samples.Threading.Tasks
             sample.Execute();
         }
 
-        private void Execute()
+        private async void Execute()
         {
             var task = Task.Run(Wait);
 
@@ -26,6 +26,13 @@ namespace CSharpConsole.Samples.Threading.Tasks
                 Console.WriteLine("Task completed");
                 if (task.Exception != null)
                     throw task.Exception;
+
+
+                await MyMethodAsync(_cts.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                
             }
             catch (Exception ex)
             {
@@ -37,6 +44,24 @@ namespace CSharpConsole.Samples.Threading.Tasks
         private async Task Wait()
         { 
             await Task.Delay(10000, _cts.Token);
+        }
+
+        private async Task MyMethodAsync(CancellationToken ct)
+        {
+            for (int i = 0; i < 10; i++) 
+            {
+                Thread.Sleep(1000);
+
+                if(ct.IsCancellationRequested)
+                {
+                    //rollback
+
+                    return;
+                }
+
+                //ct.ThrowIfCancellationRequested();
+
+            }
         }
     }
 }
