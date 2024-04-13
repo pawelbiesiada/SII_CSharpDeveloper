@@ -5,11 +5,6 @@ using System.IO;
 
 namespace CSharpConsole.Samples.Class
 {
-    struct MyStruct
-    {
-
-    }
-
     class CarDto
     {
         public int Distance { get; set; }
