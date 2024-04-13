@@ -76,6 +76,7 @@ namespace MyWpfApp
             {
                 MessageBox.Show(ex.Message, "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            return;
         }
     }
 }
