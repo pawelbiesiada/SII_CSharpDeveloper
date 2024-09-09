@@ -11,24 +11,24 @@ namespace CSharpConsole.Samples.LINQ
             var a = 3;
             var b = 2;
 
-            var operation = new IntOperation((x, y) => { return x - y; });
-            //operation = new IntOperation((x, y) => x - y);
-            //operation = (x, y) => x - y;
+            var myOperation = new IntOperation((x, y) => { return x - y; });
+            //myOperation = new IntOperation((x, y) => x - y);
+            //myOperation = (x, y) => x - y;
 
-            var ret = operation.Invoke(a, b); //sum
-            Console.WriteLine("Sum on {0} and {1} is {2}", a, b, ret);
+            var result = myOperation.Invoke(a, b); //sum
+            Console.WriteLine("Sum on {0} and {1} is {2}", a, b, result);
 
-            operation = (x, y) => { Console.WriteLine("sub"); return x - y; };
-            ret = operation.Invoke(a, b); //subtraction
-            Console.WriteLine("Subtraction on {0} and {1} is {2}", a, b, ret);
+            myOperation = (x, y) => { Console.WriteLine("sub"); return x - y; };
+            result = myOperation.Invoke(a, b); //subtraction
+            Console.WriteLine("Subtraction on {0} and {1} is {2}", a, b, result);
 
-            operation = (x, y) => 
+            myOperation = (x, y) => 
             { 
                 Console.WriteLine("prod"); 
                 return x * y; 
             }; //what about += events
-            ret = operation.Invoke(a, b); //product
-            Console.WriteLine("Product on {0} and {1} is {2}", a, b, ret);
+            result = myOperation.Invoke(a, b); //product
+            Console.WriteLine("Product on {0} and {1} is {2}", a, b, result);
 
             Func<int, int, int> func = (x, y) => 3;
             func = (x, y) => x * y;
@@ -41,8 +41,8 @@ namespace CSharpConsole.Samples.LINQ
 
             Action<int, int> actionGeneric = ((x, y) =>
             {
-                Console.WriteLine(ret);
-                Console.WriteLine(operation(x, y));
+                Console.WriteLine(result);
+                Console.WriteLine(myOperation(x, y));
             });
 
             Action emptyAction = () => { };

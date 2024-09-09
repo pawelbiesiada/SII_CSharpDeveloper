@@ -62,19 +62,5 @@ namespace CSharpConsole.Samples.Threading.Threads
                 }
             }
         }
-
-
-        private void Increment3() //this one is more efficient - locking once
-        {
-            lock (_lockedObject)
-            {
-                while (_commonCounter < 10000000)
-                {
-                    _commonCounter++;
-                    _thread2Counter++;
-                }
-            }
-        }
-
     }
 }

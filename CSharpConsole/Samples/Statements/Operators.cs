@@ -15,7 +15,7 @@ namespace CSharpConsole.Samples.Statements
             int sum = a + b; // adding
             int substract = b - a; // subjecting
             int multiply = a * b; // multiplying
-            int div = b / a; // Dividing integers !!!
+            int div = b / a; // Dividing integers !!! loosing precision when using int here
 
             double x = 5.12;
             double y = 8.5;
@@ -92,23 +92,23 @@ namespace CSharpConsole.Samples.Statements
 
             Console.WriteLine($"Dzisiaj jest dzień: {dateWithTime.Day} miesiąc: {dateWithTime.Month}");
 
-            DateTime certainDateAndTime = new DateTime(2022, 2, 26, 9, 0, 0);
+            DateTime certainDateAndTime = new DateTime(2000, 1, 1, 9, 0, 0);
 
 
-            DateTime certainDate = new DateTime(2022, 2, 26);
+            DateTime certainDate = new DateTime(2000, 1, 1);
 
             TimeSpan oneHourSpan = DateTime.Now - DateTime.Now.AddHours(1);
 
             double secondsInHour = oneHourSpan.TotalSeconds;
 
-            var parsedDate = DateTime.ParseExact("20220227101400", "yyyyMMddhhmmss", CultureInfo.CurrentCulture);
+            var parsedDate = DateTime.ParseExact("20010101101400", "yyyyMMddhhmmss", CultureInfo.CurrentCulture);
         }
 
 
         public void DateTimeFormatting()
         {
             var ci = new CultureInfo("en-US");
-            DateTime.Parse("2/5/2022", ci);
+            DateTime.Parse("2/5/2000", ci);
 
 
             var currentCi = CultureInfo.CurrentCulture;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="312b8e06-f470-4cfb-a5b7-1f25b6c470c4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8888/RectangleTransform" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RectangleTransform.wsdl" MetadataType="Wsdl" ID="15201c44-ae5f-406b-9f06-d03478159cf0" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?wsdl" />
+    <MetadataFile FileName="RectangleTransform1.xsd" MetadataType="Schema" ID="112e2c24-6a6b-4889-b519-e18ecae76dfb" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?xsd=xsd0" />
+    <MetadataFile FileName="RectangleTransform2.xsd" MetadataType="Schema" ID="02b321a3-5355-41a7-8408-b728b4e5f5cb" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?xsd=xsd1" />
+    <MetadataFile FileName="RectangleTransform.disco" MetadataType="Disco" ID="013d6d17-a9ac-4e76-9e89-bd7f964528c1" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?disco" />
+    <MetadataFile FileName="RectangleTransform1.wsdl" MetadataType="Wsdl" ID="06e8900e-8ab1-44a5-bd5c-424b50114ad3" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?wsdl=wsdl0" />
+    <MetadataFile FileName="RectangleTransform3.xsd" MetadataType="Schema" ID="06b8ae71-0bf0-4e99-8696-86cc09bfee0d" SourceId="1" SourceUrl="http://localhost:8888/RectangleTransform?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

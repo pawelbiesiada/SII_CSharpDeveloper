@@ -12,7 +12,7 @@ namespace CSharpConsole.Samples.Threading.Tasks
         }
         private void Execute()
         {
-            string name = "Pawel";
+            string name = "JOhn";
 
             var parameterlessTask = new Task(ParameterlessVoidMethod);
             var parametrizedTask = new Task(VoidMethod, name);

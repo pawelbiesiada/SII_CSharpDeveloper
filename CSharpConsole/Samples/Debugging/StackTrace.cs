@@ -18,6 +18,9 @@ namespace CSharpConsole.Samples.Debugging
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
+                Console.WriteLine();
+
                 StackTrace st = new StackTrace(true);
                 string indent = "";
                 for (int i = 0; i < st.FrameCount; i++)
@@ -60,6 +63,9 @@ namespace CSharpConsole.Samples.Debugging
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
+                Console.WriteLine();
+
                 StackTrace st = new StackTrace(true);
                 string indent = "";
                 for (int i = 0; i < st.FrameCount; i++)
@@ -71,7 +77,7 @@ namespace CSharpConsole.Samples.Debugging
                     Console.WriteLine(indent + " Line Number: {0}", frame.GetFileLineNumber());
                     indent += "  ";
                 }
-                throw e;
+                throw;
             }
         }
     }

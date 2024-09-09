@@ -21,7 +21,7 @@ namespace CSharpConsole.Samples.Threading.Threads
             thread1.Start();
             thread2.Start();
 
-            thread1.Join();
+            thread1.Join(); //synchronization of threads - equivalent of Wait method in tasks
             thread2.Join();
 
             Console.WriteLine("Both threads should complete by now.");

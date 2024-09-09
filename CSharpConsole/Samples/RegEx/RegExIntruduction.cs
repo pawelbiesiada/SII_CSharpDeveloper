@@ -30,8 +30,6 @@ namespace AdvancedCSharp.Samples.RegEx
             Console.WriteLine("Greedy pattern - matches: {0}\t matches are {1}", greedyMatches.Count, greedyMatches[0]);
             Console.WriteLine("Lazy pattern - matches: {0}\t matches are {1}, {2}", lazyMatches.Count, lazyMatches[0], lazyMatches[1]);
 
-            //Regex.CacheSize - when used
-            
             Console.ReadKey();
         }
 

@@ -1,22 +1,19 @@
 ﻿namespace CSharpConsole.Samples.SOLID
 {
-    internal interface IParser
+    internal interface IMultifunctionalPrinter
     {
-        string ParseWord(byte[] stream);
-        string ParseRdf(byte[] stream);
-        string ParseJson(byte[] stream);
+        void Print (byte[] stream);
+        byte[] Scan();
     }
 
-    internal interface IWordParser
+
+
+    internal interface IScanner
     {
-        string ParseWord(byte[] stream);
+        byte[] Scan();
     }
-    internal interface IPdfParser
+    internal interface IPrinter
     {
-        string ParsePdf(byte[] stream);
-    }
-    internal interface IJsonParser
-    {
-        string ParseJson(byte[] stream);
+        void Print(byte[] stream);
     }
 }

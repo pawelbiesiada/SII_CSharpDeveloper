@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package userMgr;
+
+// The greeting service definition.
+service UserManager {
+  // Sends a greeting
+  rpc GetUser (UserRequest) returns (UserReply);
+}
+
+// The request message containing the user's name.
+message UserRequest {
+  string name = 1;
+  int32 userId = 2;
+}
+
+// The response message containing the greetings.
+message UserReply {
+  string message = 1;
+  int32 userId = 2;
+  bool isActive = 3;
+}

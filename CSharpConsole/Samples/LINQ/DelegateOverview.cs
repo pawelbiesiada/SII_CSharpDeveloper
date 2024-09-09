@@ -7,7 +7,6 @@ namespace CSharpConsole.Samples.LINQ
     {
         public delegate int IntOperation(int x, int y);
 
-        private static Action<string> _action;
         public static void Main()
         {
             DelegatePresentation();
@@ -22,29 +21,25 @@ namespace CSharpConsole.Samples.LINQ
             var a = 3;
             var b = 2;
 
-            IntOperation operation = new IntOperation(SomeFunction);
-            //operation = SomeFunction; //or this
-            //operation = Math.Min; // or this
+            IntOperation myOperation = new IntOperation(SomeFunction);
+            //myOperation = SomeFunction; //or this
+            //myOperation = Math.Min; // or this
 
-            var ret = operation.Invoke(a, b);
-            //var ret2 = operation(a, b); //shorter version
+            var ret = myOperation.Invoke(a, b);
+            //var ret2 = myOperation(a, b); //shorter version
             Console.WriteLine("Sum on {0} and {1} is {2}", a, b, ret);
 
-            operation = Math.Max;
-            ret = operation.Invoke(a, b); //subtraction
+            myOperation = Math.Max;
+            ret = myOperation.Invoke(a, b);
             Console.WriteLine("Max on {0} and {1} is {2}", a, b, ret);
 
-            Func<int, int, int> func = SomeFunction; //new SomeFunction<int, int, int>(operation);
-            Action<string> action = Print;
-            _action = action;
-            action("Text");
 
-            //subscribing to delegate - works only with void delegates
-            action += s => { Console.WriteLine("1"); };
-            action += s => { Console.WriteLine("s2"); };
-            action("");
+            Func<int, int, int> myFunc = SomeFunction; //new SomeFunction<int, int, int>(operation);
+            Action<string> myAction = Print;
+            myAction("Text");
 
-            ExecuteDelegate(operation);
+
+            ExecuteDelegate(myOperation); //you can pass delegate to another method like any reference type variable
         }
 
         private static void AnonymousMethodPresentation()
@@ -80,7 +75,8 @@ namespace CSharpConsole.Samples.LINQ
             {
                 Console.WriteLine("local function body");
             }
-            LocalFunction(); // does nothing
+
+            LocalFunction(); //executes locally created methodlike any other method
         }
 
         private static int SomeFunction(int arg1, int arg2)
@@ -93,18 +89,17 @@ namespace CSharpConsole.Samples.LINQ
         private static void Print(string message)
         {
             Console.WriteLine($"Executing {nameof(Print)} with message: {message}");
-
         }
 
 
-        private static void ExecuteDelegate(IntOperation intOperation)
+        private static void ExecuteDelegate(IntOperation someIntOperation)
         {
-            intOperation(1, 44);
+            someIntOperation(1, 44);
         }
 
-        private static void ExecuteAction(Action action)
+        private static void ExecuteAction(Action someAction)
         {
-            action();
+            someAction();
         }
     }
 }

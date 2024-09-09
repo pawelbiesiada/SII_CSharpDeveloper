@@ -28,27 +28,27 @@ namespace CSharpConsole.Samples.Types
     {
         public static void Main()
         {
-            Point point = new Point(1, 1);
-            Point point2 = new Point(2, 3);
-            Point point3 = new Point(1, 1);
+            Point myPoint = new Point(1, 1);
+            Point anotherPoint = new Point(2, 3);
+            Point yetAnotherPoint = new Point(1, 1);
 
-            var distance = point.Distance(point2);
+            var distance = myPoint.Distance(anotherPoint);
 
-            //var areEqual = point == point2; //need to overload operator for struct
-            var areEqual = point.Equals(point2); //false
-            areEqual = point.Equals(point3); //true
+            //var result = point == point2; //need to overload operator for struct
+            var result = myPoint.Equals(anotherPoint); //false
+            result = myPoint.Equals(yetAnotherPoint); //true
 
-            point.X = 5;
-            areEqual = point.Equals(point2); //false
-            areEqual = point.Equals(point3); //false
+            myPoint.X = 5;
+            result = myPoint.Equals(anotherPoint); //false
+            result = myPoint.Equals(yetAnotherPoint); //false
 
-            var copyPoint = point;
-            areEqual = point.Equals(copyPoint); //true
-            point.X = 10;
-            areEqual = point.Equals(copyPoint); //false
+            var copyPoint = myPoint;
+            result = myPoint.Equals(copyPoint); //true
+            myPoint.X = 10;
+            result = myPoint.Equals(copyPoint); //false
 
-            ModifyStruct(point);
-            areEqual = point.X == 100; // false
+            ModifyStruct(myPoint);
+            result = myPoint.X == 100; // false
 
         }
 

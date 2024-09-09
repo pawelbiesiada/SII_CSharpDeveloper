@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace CSharpConsole.Samples.Threading.Tasks
 {
+    //Explain how async/await may behave differently in project type with and without SyncronizationContext (eg. console vs WPF)
     internal class AsyncAwaitPresentation
     {
         private static void Main(string[] args)
@@ -14,7 +15,7 @@ namespace CSharpConsole.Samples.Threading.Tasks
 
         private async Task ExecuteAsync()
         {
-            var value = "Pawel";
+            var value = "John";
             var result = await GetNameAsync(value);
             Console.WriteLine("More processing is pending.");            
             Console.WriteLine(result);

@@ -19,11 +19,7 @@ namespace CSharpConsole.Samples.Class
             //var car = new Car(100); initialization sample
             _speed = avgSpeed;
         }
-        public Car(int avgSpeed, ILogger logger)
-        {
-            //var car = new Car(100); initialization sample
-            _speed = avgSpeed;
-        }
+
         // Properties
         public int Distance { get; set; }
 
@@ -49,44 +45,44 @@ namespace CSharpConsole.Samples.Class
     {
         public static void Main()
         {
-            Car car = new Car(30);
-            Car car2 = new Car(50);
-            Car car3 = new Car(30);
+            Car myCar = new Car(30);
+            Car anotherCar = new Car(50);
+            Car yetAnotherCar = new Car(30);
 
-            car.Drive(10);
+            myCar.Drive(10);
 
-            var areEqual = car == car2; //false
-            areEqual = car == car3; //false
+            var result = myCar == anotherCar; //false
+            result = myCar == yetAnotherCar; //false
 
-            areEqual = car.Equals(car2); //false
-            areEqual = car.Equals(car3); //false
+            result = myCar.Equals(anotherCar); //false
+            result = myCar.Equals(yetAnotherCar); //false
 
-            car.Distance = 50;
-            areEqual = car.Equals(car2); //false
-            areEqual = car.Equals(car3); //false
+            myCar.Distance = 50;
+            result = myCar.Equals(anotherCar); //false
+            result = myCar.Equals(yetAnotherCar); //false
 
-            var copyCar = car;
-            areEqual = car.Equals(copyCar); //true
-            car.Distance = 10;
-            areEqual = car.Equals(copyCar); //true
+            var copyCar = myCar;
+            result = myCar.Equals(copyCar); //true
+            myCar.Distance = 10;
+            result = myCar.Equals(copyCar); //true
 
-            ModifyClass(car);
-            areEqual = car.Distance == 100; // true
+            ModifyClass(myCar);
+            result = myCar.Distance == 100; // true
 
-            ModifyAndInitializeClass(car);
-            areEqual = car.Distance == 200; // true
-            areEqual = car.Distance == 300; // false
+            ModifyAndInitializeClass(myCar);
+            result = myCar.Distance == 200; // true
+            result = myCar.Distance == 300; // false
         }
 
-        public static void ModifyClass(Car car)
+        public static void ModifyClass(Car someCar)
         {
-            car.Distance = 100;
+            someCar.Distance = 100;
         }
 
-        public static void ModifyAndInitializeClass(Car car)
+        public static void ModifyAndInitializeClass(Car someCar)
         {
-            car.Distance = 200;
-            car = new Car(300);
+            someCar.Distance = 200;
+            someCar = new Car(300);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CSharpConsole.Samples.LINQ
 
         //public EventsPresentation()
         //{
-        //    PreAction += Print;
+        //    PreAction += Print;  //you can subscribe to events like this
         //    PreAction += Print;
         //    PostAction += Print;
         //}
@@ -37,7 +37,9 @@ namespace CSharpConsole.Samples.LINQ
         public void RunAction()
         {
             PreAction?.Invoke(this, new MessageEventArgs("Pre - RunAction"));
-            //Action();
+            
+            //Code executing some action should be here
+
             PostAction?.Invoke(this, new MessageEventArgs("Post - RunAction"));
         }
 

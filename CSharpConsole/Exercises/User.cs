@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CSharpConsole.Exercises
 {
@@ -41,7 +37,6 @@ namespace CSharpConsole.Exercises
             yield return new User { Id = 14, Name = "Adam", IsActive = true, Password = "z" };
             yield return new User { Id = 6, Name = "Phil", IsActive = true, Password = "!@#$$%" };
             yield return new SuperUser { Id = 12, Name = "Tom", IsActive = true, Password = "!@#$$%", IsAdmin = true };
-            yield return null;
             yield return new User { Id = 3, Name = "Paul", IsActive = true, Password = "QWERTY" };
             yield return new User { Id = 8, Name = "Adam", IsActive = false, Password = null };
             yield return new User { Id = 10, Name = "Sara", IsActive = true, Password = "6yhnMJU&" };

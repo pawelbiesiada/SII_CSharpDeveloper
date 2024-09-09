@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="WCFService.Standard" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="WCFService.Standard" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="WCFService.Standard/Imports">
+      <xsd:import schemaLocation="http://localhost:8888/RectangleTransform?xsd=xsd0" namespace="WCFService.Standard" />
+      <xsd:import schemaLocation="http://localhost:8888/RectangleTransform?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFService" />
+      <xsd:import schemaLocation="http://localhost:8888/RectangleTransform?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ShapeTransformation_GetRectangle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRectangle" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_GetRectangle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRectangleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_GetRectangle_CustomServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WCFService" name="detail" element="q1:CustomServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_ChangeSize_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeSize" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_ChangeSize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_ChangeSize_CustomServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/WCFService" name="detail" element="q2:CustomServiceException" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_GetSquare_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSquare" />
+  </wsdl:message>
+  <wsdl:message name="ShapeTransformation_GetSquare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSquareResponse" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="ShapeTransformation">
+    <wsdl:operation name="GetRectangle">
+      <wsdl:input wsaw:Action="WCFService.Standard/ShapeTransformation/GetRectangle" message="tns:ShapeTransformation_GetRectangle_InputMessage" />
+      <wsdl:output wsaw:Action="WCFService.Standard/ShapeTransformation/GetRectangleResponse" message="tns:ShapeTransformation_GetRectangle_OutputMessage" />
+      <wsdl:fault wsaw:Action="WCFService.Standard/ShapeTransformation/GetRectangleCustomServiceExceptionFault" name="CustomServiceExceptionFault" message="tns:ShapeTransformation_GetRectangle_CustomServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeSize">
+      <wsdl:input wsaw:Action="WCFService.Standard/ShapeTransformation/ChangeSize" message="tns:ShapeTransformation_ChangeSize_InputMessage" />
+      <wsdl:output wsaw:Action="WCFService.Standard/ShapeTransformation/ChangeSizeResponse" message="tns:ShapeTransformation_ChangeSize_OutputMessage" />
+      <wsdl:fault wsaw:Action="WCFService.Standard/ShapeTransformation/ChangeSizeCustomServiceExceptionFault" name="CustomServiceExceptionFault" message="tns:ShapeTransformation_ChangeSize_CustomServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSquare">
+      <wsdl:input wsaw:Action="WCFService.Standard/ShapeTransformation/GetSquare" message="tns:ShapeTransformation_GetSquare_InputMessage" />
+      <wsdl:output wsaw:Action="WCFService.Standard/ShapeTransformation/GetSquareResponse" message="tns:ShapeTransformation_GetSquare_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

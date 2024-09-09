@@ -2,9 +2,9 @@
 
 namespace CSharpConsole.Samples.Static
 {
-    class TestStatic
+    class StaticClassUsagePresentation
     {
-        public void Test()
+        public void ExecutionStaticMethod()
         {
             //var staticClass = new StaticClass();  invalid declaration
             StaticClass.VoidMethod();

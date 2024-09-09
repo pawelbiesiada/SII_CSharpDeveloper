@@ -13,9 +13,9 @@ namespace CSharpConsole.Samples.Types
     [Flags]
     public enum FilePrivileges
     {
-        Read,
-        Write,
-        Delete,
-        Create
+        Read = 0,
+        Write = 1,
+        Delete = 2,
+        Create = 4
     }
 }

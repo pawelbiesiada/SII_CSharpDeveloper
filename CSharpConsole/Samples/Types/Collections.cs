@@ -27,7 +27,7 @@ namespace CSharpConsole.Samples.Types
             int[,] matrix2 = {{1,2}, {2,3}, {4,5}};
         }
 
-        public void ListPresentation()
+        public void ListPresentation() //non generic collection
         {
             var list = new ArrayList();
             list.Add(2);

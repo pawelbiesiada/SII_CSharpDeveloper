@@ -25,7 +25,6 @@ namespace CSharpConsole.Samples.Reflection
             foreach (var type in types)
             {
                 var method = type.GetMethods().First();
-                //method.IsPrivate
 
                 var prop = type.GetProperties();
                 var attr = type.GetCustomAttributes();
@@ -40,7 +39,6 @@ namespace CSharpConsole.Samples.Reflection
             AssemblyName assemblyName = assembly.GetName();
             Console.WriteLine("\nName: {0}", assemblyName.Name);
             Console.WriteLine("Version: {0}.{1}", assemblyName.Version.Major, assemblyName.Version.Minor);
-            Console.WriteLine("Build time: {0}", GetAssemblyBuildTime(assembly));
 
             Console.WriteLine("\nAssembly CodeBase:");
             Console.WriteLine(assembly.Location);
@@ -49,34 +47,5 @@ namespace CSharpConsole.Samples.Reflection
             Console.WriteLine(assembly.EntryPoint);
         }
 
-        public static DateTime GetAssemblyBuildTime( Assembly assembly, TimeZoneInfo target = null)
-        {
-            var filePath = assembly.Location;
-            const int cPeHeaderOffset = 60;
-            const int cLinkerTimestampOffset = 8;
-            var b = new byte[2048];
-            Stream s = null;
-
-            try
-            {
-                s = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                s.Read(b, 0, 2048);
-            }
-            finally
-            {
-                if (s != null)
-                {
-                    s.Close();
-                }
-            }
-
-            var i = BitConverter.ToInt32(b, cPeHeaderOffset);
-            var secondsSince1970 = BitConverter.ToInt32(b, i + cLinkerTimestampOffset);
-            var dt = new DateTime(1970, 1, 1, 0, 0, 0);
-            dt = dt.AddSeconds(secondsSince1970);
-            var tz = target ?? TimeZoneInfo.Local;
-            dt = dt.AddHours(tz.GetUtcOffset(dt).Hours);
-            return dt;
-        }
     }
 }

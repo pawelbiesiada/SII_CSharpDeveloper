@@ -119,7 +119,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
             DriveCar(car);
 
 
-            var isTypeOf = car is ICar;
+            var isTypeOf = car is IVehicle;
 
             Car familyCar = new FamilyCar(80);
             //var capacity = familyCar.TrunkCapacity; // we don't have an access
@@ -154,7 +154,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
             SportCar sportCar = new SportCar();
             sportCar = new LuxurySportCar();
-            isTypeOf = sportCar is ICar;
+            isTypeOf = sportCar is IVehicle;
             //sportCar = new Car(90); // can't do'
             //you can cast detailed object to more generic implicitly
 
@@ -180,7 +180,7 @@ namespace CSharpConsole.Samples.Class.Inheritance
 
         }
 
-        private static void CastInterfaceTest(ICar car)
+        private static void CastInterfaceTest(IVehicle car)
         {
             car.Drive(10);
             Console.WriteLine($"new Distance {car.Distance}");

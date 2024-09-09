@@ -40,13 +40,10 @@ namespace CSharpConsole.Samples.Patterns
             {
                 case Model.Mondeo:
                     return new Mondeo();
-                    break;
                 case Model.Focus:
                     return new Focus();
-                    break;
                 case Model.Fiesta:
                     return new Fiesta();
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(model), model, null);
             } 

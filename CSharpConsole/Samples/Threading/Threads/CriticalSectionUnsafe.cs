@@ -9,8 +9,6 @@ namespace CSharpConsole.Samples.Threading.Threads
         int _thread1Counter;
         int _thread2Counter;
 
-        int _interlockedCommonCounter;
-
         private static void Main(string[] args)
         {
             var sample = new CriticalSectionUnsafe();
@@ -31,7 +29,6 @@ namespace CSharpConsole.Samples.Threading.Threads
             Console.WriteLine("Thread2 executed the loop {0:N0} times", _thread2Counter);
             Console.WriteLine("Both Thread1 & Thread2 executed the loop {0:N0} times", (_thread1Counter + _thread2Counter));
             Console.WriteLine("CommonCounter was increased {0:N0} times", _commonCounter);
-            Console.WriteLine("InterlockedCommonCounter was increased {0:N0} times", _interlockedCommonCounter);
             Console.ReadKey();
         }
 
@@ -39,9 +36,7 @@ namespace CSharpConsole.Samples.Threading.Threads
         {
             while (_commonCounter < 10_000_000)
             {
-
                 _commonCounter++;
-                Interlocked.Increment(ref _interlockedCommonCounter);
                 _thread1Counter++;
             }
         }
@@ -51,7 +46,6 @@ namespace CSharpConsole.Samples.Threading.Threads
             while (_commonCounter < 10_000_000)
             {
                 _commonCounter++;
-                Interlocked.Increment(ref _interlockedCommonCounter);
                 _thread2Counter++;
             }
         }

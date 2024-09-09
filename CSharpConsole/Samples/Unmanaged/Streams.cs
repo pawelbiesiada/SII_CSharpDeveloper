@@ -9,7 +9,6 @@ namespace CSharpConsole.Samples.Unmanaged
     {
         public static void Main()
         {
-            UsingEquivalentPresentation();
             UsingPresentation();
 
             FileStreamPresentation(); //can work with any file binary and text
@@ -91,13 +90,14 @@ namespace CSharpConsole.Samples.Unmanaged
             }
         }
 
-        private static void UsingEquivalentPresentation()
+        private static void ThisIsHowUsingClauseLooksUnderneath()
         {
-            IDisposable disposable = null;
+            MemoryStream disposable = null; //must be of IDisposable type
 
             try
             {
                 disposable = new MemoryStream();
+                var canRead = disposable.CanRead;
                 //work with disposable
             }
             finally
