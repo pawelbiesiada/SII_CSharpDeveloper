@@ -16,4 +16,8 @@
     <Folder Include="Private\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+  </ItemGroup>
+
 </Project>
