@@ -9,13 +9,12 @@ namespace CSharpConsole.Samples.Types
         Divide = 2,
         Multiply = 3
     }
-
     [Flags]
     public enum FilePrivileges
     {
-        Read,
-        Write,
-        Delete,
-        Create
+        Read=1,
+        Write=2,
+        Delete=4,
+        Create=8
     }
 }

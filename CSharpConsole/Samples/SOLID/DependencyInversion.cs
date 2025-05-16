@@ -19,7 +19,7 @@ namespace CSharpConsole.Samples.SOLID
     public class DependencyInversion
     {
         private ILogger _logger;
-
+        
         public DependencyInversion(ILogger logger)
         {
             _logger = logger;

@@ -23,7 +23,7 @@ namespace CSharpConsole.Samples.Statements
             double sumD = x + y; // adding
             double substractD = y - x; // subjecting
             double multiplyD = x * y; // multiplying
-            double divD = x / y; // Dividing integers
+            double divD = x / y; // Dividing
 
 
             double expression = a + b / x;
@@ -108,16 +108,21 @@ namespace CSharpConsole.Samples.Statements
         public void DateTimeFormatting()
         {
             var ci = new CultureInfo("en-US");
-            DateTime.Parse("2/5/2022", ci);
-
+            var dt = DateTime.Parse("2/5/2022", ci);
+            dt = DateTime.Parse("2/5/2022", new CultureInfo("pl-PL"));
 
             var currentCi = CultureInfo.CurrentCulture;
+
             CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            Console.WriteLine(553322.ToString(CultureInfo.CurrentCulture));
 
-            var ciPL = new CultureInfo("pl-PL");
+            CultureInfo.CurrentCulture = new CultureInfo("pl-PL");
+            Console.WriteLine(553322.ToString(CultureInfo.CurrentCulture));
 
-            Console.WriteLine(553322.ToString("c", ci));
-            Console.WriteLine(553322.ToString("c"));
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            Console.WriteLine(553322.ToString("c", CultureInfo.CurrentCulture));
+            CultureInfo.CurrentCulture = new CultureInfo("pl-PL");
+            Console.WriteLine(553322.ToString("c", CultureInfo.CurrentCulture));
         }
 
         public void CastOperations()
